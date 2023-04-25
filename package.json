@@ -1,7 +1,7 @@
 {
   "name": "hws2",
   "homepage": "http://Alexandr1991Sh.github.io/dz-hw1",
-  "version",: "0.1.0",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "11.10.4",
