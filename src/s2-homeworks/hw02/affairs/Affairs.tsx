@@ -4,24 +4,29 @@ import {AffairType, FilterType} from '../HW2'
 import s from './Affairs.module.css'
 
 type AffairsPropsType = {
-    data: any // need to fix any
-    setFilter: any
-    deleteAffairCallback: any
+    data: AffairType[] // need to fix any
+    setFilter:   (filter: FilterType) => void //-запоминай, как типизируется useState
+    deleteAffairCallback: (_id: number)=> void  //не забывай, что функция сюда приехала не пустой
     filter: FilterType
 }
 
 function Affairs(props: AffairsPropsType) {
     const setAll = () => {
         // need to fix
+        //пропс.setFilter('all')
+        props.setFilter('all')
     }
     const setHigh = () => {
         // need to fix
+        props.setFilter('high')
     }
     const setMiddle = () => {
         // need to fix
+        props.setFilter('middle')
     }
     const setLow = () => {
         // need to fix
+        props.setFilter('low')
     }
 
     const cnAll = s.button + ' ' + s.all + (props.filter === 'all' ? ' ' + s.active : '')
@@ -29,6 +34,13 @@ function Affairs(props: AffairsPropsType) {
     const cnMiddle = s.button + ' ' + s.middle + (props.filter === 'middle' ? ' ' + s.active : '')
     const cnLow = s.button + ' ' + s.low + (props.filter === 'low' ? ' ' + s.active : '')
 
+
+    // создаем переменную=мапим наши данные (affairs)=>{
+    // <вызываем компоненту <Affair в которую передаем глубже необходимые данные
+    // в том числе колбэк deleteAffairCallback
+    // />}
+    // получается, что мы мапим массив, но он не отрисовывается тут же, а погружается
+    // глубже в компоненту <Affair/> где произойдет отрисовка
     const mappedAffairs = props.data.map((a: AffairType) => (
         <Affair
             key={a._id} // кеи ОБЯЗАТЕЛЬНЫ в 99% - так что лучше их писать всегда при создании компонент в мапе
@@ -69,6 +81,9 @@ function Affairs(props: AffairsPropsType) {
                     Low
                 </button>
             </div>
+            {/*Вот то что мы мапили на стр40 здесь используем. Можно было конечно прямо*/}
+            {/*здесь мапить и разводить болото, но мы решили работать по красивому и*/}
+            {/*все вынесли*/}
             <div className={s.affairs}>{mappedAffairs}</div>
         </div>
     )
