@@ -17,7 +17,7 @@ import s2 from '../../s1-main/App.module.css'
 * */
 
 // types
-export type AffairPriorityType = 'high' | 'low'| 'middle' // need to fix any
+export type AffairPriorityType = 'low'| 'middle' | 'high'  // need to fix any
 export type AffairType = {
     _id: number // need to fix any
     name: string // need to fix any
@@ -59,7 +59,7 @@ function HW2() {
         // need to fix
         // это просто функция стрелочник-она засетает, то что сделает deleteAffair
         // setAffairs(вызываю функцию(передаю аргументы))
-        setAffairs( deleteAffair(affairs, _id))
+        setAffairs(deleteAffair(affairs, _id))
     }
 
     return (
