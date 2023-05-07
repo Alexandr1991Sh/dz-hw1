@@ -12,20 +12,16 @@ type AffairsPropsType = {
 
 function Affairs(props: AffairsPropsType) {
     const setAll = () => {
-        // need to fix
         //пропс.setFilter('all')
         props.setFilter('all')
     }
     const setHigh = () => {
-        // need to fix
         props.setFilter('high')
     }
     const setMiddle = () => {
-        // need to fix
         props.setFilter('middle')
     }
     const setLow = () => {
-        // need to fix
         props.setFilter('low')
     }
 
