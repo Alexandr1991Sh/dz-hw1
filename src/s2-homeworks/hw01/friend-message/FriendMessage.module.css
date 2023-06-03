@@ -1,5 +1,5 @@
 .friendMessage {
-
+margin-left: 50px;
 }
 
 .friendImageAndText {
@@ -7,7 +7,7 @@
 }
 
 .friendImageAndText img {
-
+    width: 100px;
 }
 
 .friendText {
