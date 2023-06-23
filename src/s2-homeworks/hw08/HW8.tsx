@@ -14,7 +14,7 @@ import User from './User'
 export type UserType = {
     _id: number
     name: string
-    age: number
+    age:  number
 }
 
 const initialPeople: UserType[] = [
