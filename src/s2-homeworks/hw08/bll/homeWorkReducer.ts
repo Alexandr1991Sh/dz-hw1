@@ -4,17 +4,18 @@ type ActionType =
     | { type: 'sort'; payload: 'up' | 'down' }
     | { type: 'check'; payload: number }
 
-export const homeWorkReducer = (state: UserType[], action: ActionType): UserType[] => { // need to fix any
+export const homeWorkReducer = (state: UserType[], action: ActionType): UserType[] => { //
     switch (action.type) {
-        case 'sort': { // by name
-            // sort() создаёт новый массив? или нужно в ручную?...
+        case 'sort': {
             if (action.payload === 'up') {
                 return [...state.sort(function (a, b) {
                     if (a.name > b.name) {
                         return 1
-                    } else if (a.name < b.name) {
+                    }
+                    else if (a.name < b.name) {
                         return -1
-                    } else {
+                    }
+                    else {
                         return 0
                     }
                 })]
@@ -24,7 +25,7 @@ export const homeWorkReducer = (state: UserType[], action: ActionType): UserType
                     if (a.name > b.name) {
                         return -1
                     }
-                    else if (a.name<b.name){
+                    else if (a.name < b.name) {
                         return 1
                     }
                     else {
@@ -32,14 +33,13 @@ export const homeWorkReducer = (state: UserType[], action: ActionType): UserType
                     }
                 })]
             }
-         else  return state
+            else return state
         }
         case 'check': {
-            // filter() создаёт новый массив? или нужно в ручную?...
-            return state.filter(el => el.age >= action.payload)
+            return state.filter((el) => el.age >= action.payload)
         }
         default:
             return state
+
     }
 }
-
