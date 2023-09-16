@@ -12,7 +12,7 @@ type DefaultRadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>,
     HTMLSpanElement>
 
-type SuperRadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
+type SuperRadioPropsType = Omit<DefaultRadioPropsType,  'type'> & {
     options?: any[]
     onChangeOption?: (option: any) => void
 
