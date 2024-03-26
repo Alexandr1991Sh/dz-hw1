@@ -41,8 +41,10 @@ function Clock() {
     // const stringDay = 'date->day' || <br/> // пишут студенты
     // const stringMonth = 'date->month' || <br/> // пишут студенты
 
-    const stringDay = date.getDate()
-    const stringMonth = date.getMonth()
+    const stringDay = Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(date)
+    const stringMonth = Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(date)
+    // const stringDay = date.getDay()
+    // const stringMonth = date.getMonth()
 
     return (
         <div className={s.clock}>
