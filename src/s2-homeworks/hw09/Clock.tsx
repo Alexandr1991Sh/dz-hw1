@@ -72,6 +72,7 @@ function Clock() {
                             <span id={'hw9-month'}>{stringMonth}</span>,{' '}
                             {/*<span id={'hw9-month'}>{stringMonth[date.getMonth()]}</span>,{' '}*/}
                             <span id={'hw9-date'}>{stringDate}</span>
+
                         </>
                     ) : (
                         <>
