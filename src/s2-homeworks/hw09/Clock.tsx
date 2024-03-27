@@ -37,7 +37,7 @@ function Clock() {
     // const stringTime = date.toLocaleTimeString()
     // const stringDate = date.toLocaleDateString()
     const stringTime = `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}:${('0' + date.getSeconds()).slice(-2)}`
-    const stringDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+    const stringDate = `${date.getDate()}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`
 
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
@@ -49,7 +49,6 @@ function Clock() {
 
     // const stringDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] // пишут студенты
     // const stringMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] // пишут студенты
-
 
     return (
         <div className={s.clock}>
