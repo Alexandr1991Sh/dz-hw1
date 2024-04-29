@@ -6,8 +6,6 @@ type StateType = {
     isLoading: boolean
 }
 
-
-
 export const loadingReducer = (state: StateType = initState, action: LoadingActionType): typeof initState=> { // fix any
     switch (action.type) {
         // пишет студент  // need to fix
