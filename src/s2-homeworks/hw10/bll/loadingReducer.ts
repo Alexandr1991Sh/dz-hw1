@@ -10,7 +10,7 @@ export const loadingReducer = (state: StateType = initState, action: LoadingActi
     switch (action.type) {
         // пишет студент  // need to fix
 
-        case "CHANGE_LOADING": {
+        case "CHANGE_LOADING":  {
             return {...state, isLoading: action.isLoading}
         }
 
