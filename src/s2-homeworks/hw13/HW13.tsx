@@ -19,6 +19,7 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -30,31 +31,38 @@ const HW13 = () => {
         setImage('')
         setText('')
         setInfo('...loading')
+        setLoading(true)
 
         axios
             .post(url, {success: x})
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
-                // дописать
-                // setText(res.data.errorText||'ooy')
-                setInfo('')
-
-
+                setInfo(res.data.info)
+                setText(res.data.errorText)
             })
             .catch((e) => {
-                // дописать
-                if(e.response){
-                    // setCode(e)
-                    setText(e.response.data.errorText)
-                    setImage(e.response.status ===400?error400:error500)
-                    setInfo('')
-                }else {
-                    setImage(errorUnknown)
+                setCode(e.message);
+                setImage(errorUnknown);
+                setInfo('Error');
+                if (e.response) {
+                    if (e.response.status === 400) {
+                        setCode('Код 400!');
+                        setImage(error400);
+                        setInfo(e.response.data.info)
+                        setText(e.response.data.errorText)
+
+                    } else if (e.response.status === 500) {
+                        setCode('Код 500!');
+                        setImage(error500);
+                        setInfo(e.response.data.info)
+                        setText(e.response.data.errorText)
+                    }
                 }
-            }).finally(()=>{
-            setInfo('')
-        })
+            })
+            .finally(() => {
+                setLoading(false)
+            });
     }
 
     return (
@@ -67,8 +75,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        // дописать
-                        disabled={info==='...loading'}
+                        disabled={loading}
                     >
                         Send true
                     </SuperButton>
@@ -76,8 +83,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        // дописать
-                        disabled={info==='...loading'}
+                        disabled={loading}
                     >
                         Send false
                     </SuperButton>
@@ -85,8 +91,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        // дописать
-                        disabled={info==='...loading'}
+                        disabled={loading}
                     >
                         Send undefined
                     </SuperButton>
@@ -94,8 +99,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        // дописать
-                        disabled={info==='...loading'}
+                        disabled={loading}
                     >
                         Send null
                     </SuperButton>
