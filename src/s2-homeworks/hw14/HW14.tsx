@@ -30,26 +30,44 @@ const HW14 = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [techs, setTechs] = useState<string[]>([])
 
+    // const sendQuery = (value: string) => {
+    //     setLoading(true)
+    //     getTechs(value)
+    //         .then((res) => {
+    //             // делает студент
+    //             // сохранить пришедшие данные
+    //
+    //
+    //         })
+    // }
+
     const sendQuery = (value: string) => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
+                if (res && res.data.techs.length > 0) {
+                    setLoading(false)
+                    setTechs(res.data.techs)
+                } else {
+                    setLoading(false)
+                    setTechs(['NO MATCHES'])
+                }
             })
     }
 
+    // const onChangeText = (value: string) => {
+    //     setFind(value)
+    //     // делает студент
+    //
+    //     // добавить/заменить значение в квери урла
+    //     // setSearchParams(
+    //
+    //     //
+    // }
+
     const onChangeText = (value: string) => {
         setFind(value)
-        // делает студент
-
-        // добавить/заменить значение в квери урла
-        // setSearchParams(
-
-        //
+        setSearchParams(value)
     }
 
     useEffect(() => {
