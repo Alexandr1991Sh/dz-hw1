@@ -51,35 +51,46 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
+                // делает студент - сохранить пришедшие данные
+                if (!res) return;
+                setTechs(res.data.techs)
+                setTotalCount(res.data.totalCount);
             })
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
-        // setPage(
-        // setCount(
+        console.log(count, page)
+        setPage(newPage)
+        setCount(newCount)
 
         // sendQuery(
+        sendQuery({page: newPage.toString(), count: newCount.toString()})
         // setSearchParams(
-
+        setSearchParams({page: newPage.toString(), count: newCount.toString()})
         //
     }
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
-
         // sendQuery(
         // setSearchParams(
 
+        // setSort(
+        setSort(newSort)
+
+        setPage(1) // при сортировке сбрасывать на 1 страницу
+        searchParams.set("page", '1')
+
+        // sendQuery(
+        sendQuery({count: count, page: 1, sort: newSort})
+        // setSearchParams(
+        setSearchParams({page: page.toString(), count: count.toString()})
         //
     }
 
